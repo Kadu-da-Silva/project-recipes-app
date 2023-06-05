@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import profileImg from '../images/profileIcon.svg';
+import searchImg from '../images/searchIcon.svg';
 
 function Header(props) {
   const { search, name } = props;
   return (
     <header>
       <img
-        src="src\images\profileIcon.svg"
+        src={ profileImg }
         alt="Profile"
         data-testid="profile-top-btn"
       />
       { search && <img
-        src="src/images/searchIcon.svg"
+        src={ searchImg }
         alt="Search"
         data-testid="search-top-btn"
       />}

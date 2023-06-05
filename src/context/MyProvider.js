@@ -6,22 +6,14 @@ function MyProvider({ children }) {
   const [globalState, setGlobalState] = useState('');
   console.log(setGlobalState);
 
-  return (
-    <MyContext.Provider
-      value={ globalState }
-    >
-      {children}
-    </MyContext.Provider>
-  );
+  return <MyContext.Provider value={globalState}>{children}</MyContext.Provider>;
 }
 
 // Comenta
 
 MyProvider.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
+    .isRequired,
 };
 
 export default MyProvider;

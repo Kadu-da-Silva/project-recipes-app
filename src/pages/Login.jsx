@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Login() {
   const [input, setInput] = useState({ email: '', password: '', disabled: true });
@@ -7,21 +7,26 @@ function Login() {
     const lintErro = 6;
     const buttonControl = /\S+@\S+\.\S+/.test(input.email) && input.password.length >= lintErro;
 
-    if (buttonControl) { setInput({ ...input, disabled: false }); }
+    if (buttonControl) {
+      setInput({ ...input, disabled: false });
+    } else {
+      setInput({ ...input, disabled: true });
+    }
   };
 
   const handleChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    setInput({ ...input, [name]: value }, () => validation());
-
-    console.log(input.password.length);
-    // validation();
-    // Validacao está atrasada.
+    setInput({ ...input, [name]: value });
   };
 
+  useEffect(() => {
+    validation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input]);
+
   const handleSubmit = () => {
-    console.log('tá clicando mano');
+    localStorage.setItem('user', input.email);
   };
 
   return (
