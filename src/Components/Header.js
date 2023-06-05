@@ -6,7 +6,7 @@ function Header(props) {
   return (
     <header>
       <img
-        src="src\images\profileIcon.svg"
+        src="./../src/images/profileIcon.svg"
         alt="Profile"
         data-testid="profile-top-btn"
       />
