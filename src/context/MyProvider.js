@@ -7,7 +7,7 @@ function MyProvider({ children }) {
 
   return (
     <MyContext.Provider
-      value={{ globalState, setGlobalState }}
+      value={ { globalState, setGlobalState } }
     >
       {children}
     </MyContext.Provider>
@@ -20,5 +20,4 @@ MyProvider.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
     .isRequired,
 };
-//oleola
 export default MyProvider;
