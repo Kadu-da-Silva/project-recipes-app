@@ -4,12 +4,11 @@ import MyContext from './MyContext';
 
 function MyProvider({ children }) {
   const [globalState, setGlobalState] = useState('');
+  console.log(setGlobalState);
 
   return (
     <MyContext.Provider
-      value={
-        { globalState, setGlobalState }
-      }
+      value={ globalState }
     >
       {children}
     </MyContext.Provider>
