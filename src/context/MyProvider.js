@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { PropTypes } from 'prop-types';
 import MyContext from './MyContext';
 
 function MyProvider({ children }) {
   const [globalState, setGlobalState] = useState({});
 
+  const contextValue = useMemo(() => ({ globalState, setGlobalState }), [
+    globalState,
+    setGlobalState,
+  ]);
+
   return (
-    <MyContext.Provider
-      value={ { globalState, setGlobalState } }
-    >
+    <MyContext.Provider value={ contextValue }>
       {children}
     </MyContext.Provider>
   );
 }
 
-// Comenta
-
 MyProvider.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
-    .isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element, PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
 export default MyProvider;
