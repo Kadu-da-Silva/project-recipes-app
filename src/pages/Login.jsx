@@ -1,18 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Login() {
-  const [input, setInput] = useState({ email: '', password: '', disabled: true });
-
-  const validation = () => {
-    const lintErro = 6;
-    const buttonControl = /\S+@\S+\.\S+/.test(input.email) && input.password.length >= lintErro;
-
-    if (buttonControl) {
-      setInput({ ...input, disabled: false });
-    } else {
-      setInput({ ...input, disabled: true });
-    }
-  };
+  const [input, setInput] = useState({ email: '', password: '' });
+  const [isValid, setIsValid] = useState(false);
 
   const handleChange = ({ target }) => {
     const { name } = target;
@@ -20,14 +10,21 @@ function Login() {
     setInput({ ...input, [name]: value });
   };
 
-  useEffect(() => {
-    validation();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input]);
-
   const handleSubmit = () => {
     localStorage.setItem('user', input.email);
   };
+
+  const validateFields = () => {
+    const { email, password } = input;
+    const MAX_PASSWORD_LENGTH = 6;
+    const isEmailValid = /\S+@\S+\.\S+/.test(email); // Verifica se o email é válido
+    const isPasswordValid = password.length > MAX_PASSWORD_LENGTH; // Verifica se a senha tem pelo menos 6 caracteres
+    setIsValid(isEmailValid && isPasswordValid);
+  };
+
+  useEffect(() => {
+    validateFields();
+  }, [input]);
 
   return (
     <form>
@@ -55,7 +52,8 @@ function Login() {
         type="button"
         data-testid="login-submit-btn"
         onClick={ handleSubmit }
-        disabled={ input.disabled }
+        disabled={ !isValid } // Desabilita o botão se isValid for false
+        className={ !isValid ? 'disabled' : '' }
       >
         Enter
       </button>

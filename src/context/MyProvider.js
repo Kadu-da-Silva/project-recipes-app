@@ -6,7 +6,7 @@ function MyProvider({ children }) {
   const [globalState, setGlobalState] = useState('');
   console.log(setGlobalState);
 
-  return <MyContext.Provider value={globalState}>{children}</MyContext.Provider>;
+  return <MyContext.Provider value={ globalState }>{children}</MyContext.Provider>;
 }
 
 // Comenta
