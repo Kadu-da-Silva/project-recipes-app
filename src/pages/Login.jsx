@@ -9,8 +9,6 @@ function Login() {
 
     if (buttonControl) {
       setInput({ ...input, disabled: false });
-    } else {
-      setInput({ ...input, disabled: true });
     }
   };
 

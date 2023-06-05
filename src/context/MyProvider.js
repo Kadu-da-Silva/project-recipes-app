@@ -3,10 +3,15 @@ import { PropTypes } from 'prop-types';
 import MyContext from './MyContext';
 
 function MyProvider({ children }) {
-  const [globalState, setGlobalState] = useState('');
-  console.log(setGlobalState);
+  const [globalState, setGlobalState] = useState({});
 
-  return <MyContext.Provider value={ globalState }>{children}</MyContext.Provider>;
+  return (
+    <MyContext.Provider
+      value={{ globalState, setGlobalState }}
+    >
+      {children}
+    </MyContext.Provider>
+  );
 }
 
 // Comenta
