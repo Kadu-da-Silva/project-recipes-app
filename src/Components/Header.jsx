@@ -74,7 +74,7 @@ function Header(props) {
 
     // if (searchBar.length > 0 && meals) {
     //   global.alert('Sorry, we haven\'t found any recipes for these filters.');
-    // }
+    // }.
   };
 
   // Redirecione para a tela de detalhes da receita caso apenas uma receita seja encontrada, com o ID da mesma na URL
