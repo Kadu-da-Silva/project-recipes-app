@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [input, setInput] = useState({ email: '', password: '' });
   const [isValid, setIsValid] = useState(false);
+  const history = useHistory();
 
   const handleChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, value } = target;
     setInput({ ...input, [name]: value });
   };
 
   const handleSubmit = () => {
-    localStorage.setItem('user', input.email);
+    localStorage.setItem('user', JSON.stringify({ email: input.email }));
+    history.push('/meals');
   };
 
   //   Ao envolver a definição de validateFields com useCallback, garantimos que a função é memoizada e reutilizada apenas quando as dependências (nesse caso, apenas input) forem alteradas. Em seguida, passamos validateFields como a única dependência do useEffect, para que ele seja acionado sempre que validateFields for modificado.

@@ -2,11 +2,17 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
+import renderWithRouter from '../utils/renderWithRouter';
 import Login from '../pages/Login';
 
+const VALID_EMAIL = 'Validemail@test.com';
+const VALID_PASSWORD = '1234567';
 const emailField = 'email-input';
 const passwordField = 'password-input';
 const button = 'login-submit-btn';
+const userObject = {
+  email: VALID_EMAIL,
+};
 
 describe('Testando Login', () => {
   it('Testando se inputs estao renderizando', () => {
@@ -51,8 +57,6 @@ describe('Testando Login', () => {
 
   it('testando email e password invalidos', () => {
     render(<Login />);
-    const VALID_EMAIL = 'Validemail@test.com';
-    const VALID_PASSWORD = '1234567';
 
     const email = screen.getByTestId(emailField);
     const password = screen.getByTestId(passwordField);
@@ -66,9 +70,7 @@ describe('Testando Login', () => {
     expect(btn).toBeEnabled();
   });
   it('testando localStorage', () => {
-    render(<Login />);
-    const VALID_EMAIL = 'Validemail@test.com';
-    const VALID_PASSWORD = '1234567';
+    const { history } = renderWithRouter(<Login />);
 
     const email = screen.getByTestId(emailField);
     const password = screen.getByTestId(passwordField);
@@ -86,7 +88,7 @@ describe('Testando Login', () => {
     });
 
     const user = localStorage.getItem('user');
-    console.log(user);
-    expect(user).toBe(VALID_EMAIL);
+    expect(JSON.parse(user)).toEqual(userObject);
+    expect(history.location.pathname).toBe('/meals');
   });
 });
