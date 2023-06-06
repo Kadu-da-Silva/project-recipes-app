@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [input, setInput] = useState({ email: '', password: '' });
   const [isValid, setIsValid] = useState(false);
+  const history = useHistory();
 
   const handleChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, value } = target;
     setInput({ ...input, [name]: value });
   };
 
   const handleSubmit = () => {
-    localStorage.setItem('user', input.email);
+    localStorage.setItem('user', JSON.stringify({ email: input.email }));
+    history.push('/meals');
   };
 
-  const validateFields = () => {
+  //   Ao envolver a definição de validateFields com useCallback, garantimos que a função é memoizada e reutilizada apenas quando as dependências (nesse caso, apenas input) forem alteradas. Em seguida, passamos validateFields como a única dependência do useEffect, para que ele seja acionado sempre que validateFields for modificado.
+
+  // Dessa forma, o aviso do Lint será resolvido e o código estará otimizado para evitar criações desnecessárias de funções.
+
+  const validateFields = useCallback(() => {
     const { email, password } = input;
     const MAX_PASSWORD_LENGTH = 6;
-    const isEmailValid = /\S+@\S+\.\S+/.test(email); // Verifica se o email é válido
-    const isPasswordValid = password.length > MAX_PASSWORD_LENGTH; // Verifica se a senha tem pelo menos 6 caracteres
+    const isEmailValid = /\S+@\S+\.\S+/.test(email);
+    const isPasswordValid = password.length > MAX_PASSWORD_LENGTH;
     setIsValid(isEmailValid && isPasswordValid);
-  };
+  }, [input]);
 
   useEffect(() => {
     validateFields();
-  }, [input]);
+  }, [validateFields]);
 
   return (
     <form>
