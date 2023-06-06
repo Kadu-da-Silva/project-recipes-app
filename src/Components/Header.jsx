@@ -1,23 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-
 import profileImg from '../images/profileIcon.svg';
 import searchImg from '../images/searchIcon.svg';
-
 import MyContext from '../context/MyContext';
-
 import { fetchApi } from '../services/fetchApi';
-import RenderMealsAndDrinks from './RenderMealsAndDrinks';
 
 function Header(props) {
   const { pageWithAllHeader, name } = props;
-
   // Estados Globais
   // Lida com retorno da Api
   const { globalState, setGlobalState } = useContext(MyContext);
   const { meals, drinks } = globalState;
-
   // Estados da Página
   // Lida com o aparecimento da barra
   const [searchBarBool, setSearchBarBool] = useState(false);
@@ -26,7 +20,7 @@ function Header(props) {
   // Lida com o aviso de alerta, selecionar o campo First Letter e digitar mais de uma letra
   const [showAlert, setShowAlert] = useState(false);
   // Lida com o retorno da Api, para renderizar as 12 receitas
-  const [renderRecipes, setRenderRecipes] = useState(false);
+  // const [renderRecipes, setRenderRecipes] = useState(false); ALTEREI PARA CHAMAR AS RECEITAS NAS PÁGINAS -Pedro
 
   // verifica se o radio selecionado é "First letter" e se o valor do campo de busca (searchState.searchBar) tem mais de um caractere. Nesse caso, define showAlert como true:
   useEffect(() => {
@@ -47,7 +41,6 @@ function Header(props) {
   const submitSearch = () => {
     if (showAlert) {
       global.alert('Your search must have only 1 (one) character');
-      return;
     }
 
     const { inputRadio, searchBar } = searchState;
@@ -69,45 +62,32 @@ function Header(props) {
     }
 
     fetchApi(URL, globalState, setGlobalState);
-    console.log(meals);
-    console.log(drinks);
-
-    // if (searchBar.length > 0 && meals) {
-    //   global.alert('Sorry, we haven\'t found any recipes for these filters.');
-    // }.
   };
 
   // Redirecione para a tela de detalhes da receita caso apenas uma receita seja encontrada, com o ID da mesma na URL
   const history = useHistory();
 
   useEffect(() => {
-    // console.log(meals);
-    // console.log(drinks);
-
     const containMeals = meals?.length > 0;
     const containDrinks = drinks?.length > 0;
 
     if (containMeals && meals.length === 1) {
-      console.log('só tem uma receita');
       const { idMeal } = meals[0];
       history.push(`/meals/${idMeal}`);
     }
 
     if (containDrinks && drinks.length === 1) {
-      console.log('também só tem uma receita');
       const { idDrink } = drinks[0];
       history.push(`/drinks/${idDrink}`);
     }
+    // NÃO PRECISA MAIS DESSA PARTE...
+    // if (containMeals && meals.length > 1) {
+    //   setRenderRecipes(true);
+    // }
 
-    if (containMeals && meals.length > 1) {
-      console.log('Meals tem mais que 12 receitas');
-      setRenderRecipes(true);
-    }
-
-    if (containDrinks && drinks.length > 1) {
-      console.log('Drinks tem mais que 12 receitas');
-      setRenderRecipes(true);
-    }
+    // if (containDrinks && drinks.length > 1) {
+    //   setRenderRecipes(true);
+    // }
   }, [globalState, history, drinks, meals]);
 
   return (
@@ -193,12 +173,6 @@ function Header(props) {
           >
             Pesquisar
           </button>
-
-          {/* Renderiza as 12 Receitas */}
-          {renderRecipes && <RenderMealsAndDrinks meals={ meals } drinks={ drinks } />}
-          {/* {renderRecipes && searchState.searchBar.length > 1
-            ? <RenderMealsAndDrinks meals={ meals } drinks={ drinks } />
-            : global.alert('Sorry, we haven\'t found any recipes for these filters.')} */}
         </div>)}
     </header>
   );
