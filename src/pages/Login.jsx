@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [input, setInput] = useState({ email: '', password: '' });
   const [isValid, setIsValid] = useState(false);
+  const history = useHistory();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -10,7 +12,8 @@ function Login() {
   };
 
   const handleSubmit = () => {
-    localStorage.setItem('user', input.email);
+    localStorage.setItem('user', JSON.stringify({ email: input.email }));
+    history.push('/meals');
   };
 
   const validateFields = () => {
