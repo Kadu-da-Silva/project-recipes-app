@@ -1,12 +1,26 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import style from './RenderMealsAndDrinks.css';
+import MyContext from '../context/MyContext';
+import { getCategories } from '../services/fetchApi';
 
 function RenderMealsAndDrinks({ meals, drinks }) {
+  const { type } = useContext(MyContext);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
   const twelve = 12;
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+  useEffect(() => {
+    setLoading(true);
+    getCategories(URL, categories, setCategories);
+    setLoading(false); // NÃO ESTÁ FUNCIONANDO, NO MOMENTO ELE DEVOLVE ATRASADO
+  }, [type]);
+  console.log(categories);
+
   return (
     <div>
+      {/* {!loading && categories.drinks.map((el) => <button data-testid={ `${el.strCategory}-category-filter` }>{el.strCategory}</button>)} */}
       {meals && (
         <div className={ style.container }>
           {meals.slice(0, twelve).map(({ idMeal, strMeal, strMealThumb }, index) => (

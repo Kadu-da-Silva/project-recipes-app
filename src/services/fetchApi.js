@@ -9,7 +9,12 @@ export const fetchApi = async (url, state, setState) => {
     }
     setState({ ...state, meals, drinks, data });
   } catch (error) {
-    console.log(error.message);
     global.alert('Sorry, we haven\'t found any recipes for these filters.');
   }
+};
+
+export const getCategories = async (url, state, setState) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  await setState({ ...state, categories: data });
 };
