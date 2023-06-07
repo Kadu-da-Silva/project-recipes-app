@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import profileImg from '../images/profileIcon.svg';
 import searchImg from '../images/searchIcon.svg';
 import MyContext from '../context/MyContext';
@@ -11,7 +11,6 @@ function Header(props) {
   // Estados Globais
   // Lida com retorno da Api
   const { globalState, setGlobalState } = useContext(MyContext);
-  const { meals, drinks } = globalState;
   // Estados da Página
   // Lida com o aparecimento da barra
   const [searchBarBool, setSearchBarBool] = useState(false);
@@ -64,31 +63,25 @@ function Header(props) {
     fetchApi(URL, globalState, setGlobalState);
   };
 
+  // PASSEI ESSA PARTE DA LÓGICA PARA O RenderMealsAndDrinks -- Pedro
+
   // Redirecione para a tela de detalhes da receita caso apenas uma receita seja encontrada, com o ID da mesma na URL
-  const history = useHistory();
+  // const history = useHistory();
 
-  useEffect(() => {
-    const containMeals = meals?.length > 0;
-    const containDrinks = drinks?.length > 0;
+  // useEffect(() => {
+  //   const containMeals = meals?.length > 0;
+  //   const containDrinks = drinks?.length > 0;
 
-    if (containMeals && meals.length === 1) {
-      const { idMeal } = meals[0];
-      history.push(`/meals/${idMeal}`);
-    }
+  //   if (containMeals && meals.length === 1) {
+  //     const { idMeal } = meals[0];
+  //     history.push(`/meals/${idMeal}`);
+  //   }
 
-    if (containDrinks && drinks.length === 1) {
-      const { idDrink } = drinks[0];
-      history.push(`/drinks/${idDrink}`);
-    }
-    // NÃO PRECISA MAIS DESSA PARTE...
-    // if (containMeals && meals.length > 1) {
-    //   setRenderRecipes(true);
-    // }
-
-    // if (containDrinks && drinks.length > 1) {
-    //   setRenderRecipes(true);
-    // }
-  }, [globalState, history, drinks, meals]);
+  //   if (containDrinks && drinks.length === 1) {
+  //     const { idDrink } = drinks[0];
+  //     history.push(`/drinks/${idDrink}`);
+  //   }
+  // }, [globalState, history, drinks, meals]);
 
   return (
     <header>
