@@ -7,9 +7,13 @@ import shareImg from '../images/shareIcon.svg';
 const tempDate = '23/06/2020';
 
 function DoneRecipes() {
+  if (!localStorage.doneRecipes) {
+    localStorage.setItem('doneRecipes', JSON.stringify(doneItemsMock));
+  }
   const [linkCopied, setLinkCopied] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
-
+  const getItemsFromLocalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
+  console.log(getItemsFromLocalStorage);
   const renderTags = (tags, index) => {
     if (tags === null || tags === undefined) {
       return '';
@@ -72,9 +76,9 @@ function DoneRecipes() {
           Drinks
         </button>
       </nav>
-      {doneItemsMock && (
+      {getItemsFromLocalStorage && (
         <div className="done-list">
-          {doneItemsMock
+          {getItemsFromLocalStorage
             .filter((item) => filterList(item))
             .map((item, index) => (
               <div
@@ -86,11 +90,7 @@ function DoneRecipes() {
                   maxWidth: 'fit-content',
                 } }
               >
-                <Link
-                  to={ `${
-                    item.idMeal ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`
-                  }` }
-                >
+                <Link to={ `${item.idMeal ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`}` }>
                   <img
                     src={ item.strMealThumb ? item.strMealThumb : item.strDrinkThumb }
                     alt="done recipes card img"
@@ -101,11 +101,7 @@ function DoneRecipes() {
                 <div data-testid={ `${index}-horizontal-top-text` }>
                   {item.idMeal ? `${item.strArea} - ${item.strCategory}` : item.strAlcoholic}
                 </div>
-                <Link
-                  to={ `${
-                    item.idMeal ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`
-                  }` }
-                >
+                <Link to={ `${item.idMeal ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`}` }>
                   <div data-testid={ `${index}-horizontal-name` }>
                     {item.idMeal ? item.strMeal : item.strDrink}
                   </div>

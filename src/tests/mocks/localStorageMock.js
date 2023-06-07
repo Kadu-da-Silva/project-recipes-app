@@ -1,6 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-/* eslint-disable max-len */
-
 const mealsMock = [
   {
     idMeal: '52771',
