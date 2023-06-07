@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
-import RenderMealsAndDrinks from '../Components/RenderMealsAndDrinks';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import RenderMealsAndDrinks from '../components/RenderMealsAndDrinks';
 import MyContext from '../context/MyContext';
 
 function Meals() {

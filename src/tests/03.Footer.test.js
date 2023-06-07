@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
-import Footer from '../Components/Footer';
+import Footer from '../components/Footer';
 import renderWithRouter from '../utils/renderWithRouter';
 
 const mealsTestID = 'meals-bottom-btn';
