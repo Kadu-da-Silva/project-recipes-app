@@ -16,12 +16,12 @@ function App() {
     <MyProvider>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route path="/meals" component={ Meals } />
-        <Route path="/drinks" component={ Drinks } />
-        <Route path="/meals/:id-da-receita" />
-        <Route path="/drinks/:id-da-receita" />
         <Route path="/meals/:id-da-receita/in-progress" />
         <Route path="/drinks/:id-da-receita/in-progress" />
+        <Route path="/meals/:id-da-receita" />
+        <Route path="/drinks/:id-da-receita" />
+        <Route path="/meals" component={ Meals } />
+        <Route path="/drinks" component={ Drinks } />
         <Route path="/profile" component={ Profile } />
         <Route path="/done-recipes" component={ DoneRecipes } />
         <Route path="/favorite-recipes" component={ FavoriteRecipes } />
