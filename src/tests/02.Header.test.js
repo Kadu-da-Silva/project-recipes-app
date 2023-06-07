@@ -3,7 +3,7 @@ import renderWithRouterAndContext from '../utils/renderWithRouterAndContext';
 
 import { BUTTON_SEARCH, FIRST_LETTER_RADIO, NAME_SEARCH_RADIO, PAGE_TITLE, PROFILE_TOP_BTN, SEARCH_TOP_BTN, SEARCH_INPUT, INGREDIENT_SEARCH_RADIO } from '../utils/dataTestIds';
 
-import Header from '../components/Header';
+import Header from '../Components/Header';
 import App from '../App';
 
 afterEach(jest.restoreAllMocks);
