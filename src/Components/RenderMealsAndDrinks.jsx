@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import style from './RenderMealsAndDrinks.css';
 import MyContext from '../context/MyContext';
 import { fetchApi, getCategories } from '../services/fetchApi';
 
@@ -44,32 +43,31 @@ function RenderMealsAndDrinks({ meals, drinks }) {
   };
 
   return (
-    <section className={ style.section }> // Alterei para section - Carlos
-      <button
-        data-testid="All-category-filter"
-        name="all"
-        onClick={ applyFilter }
-      >
-        All
-      </button>
-      {categories.length > 0 && categories.map((el, i) => (
+    <section className={ style.section }>
+      <div className={ style.containerButtons }>
         <button
-          key={ i }
-          data-testid={ `${el.strCategory}-category-filter` }
-          name={ el.strCategory }
+          data-testid="All-category-filter"
+          name="all"
           onClick={ applyFilter }
         >
-          {el.strCategory}
-        </button>))}
+          All
+        </button>
+        {categories.length > 0 && categories.map((el, i) => (
+          <button
+            key={ i }
+            data-testid={ `${el.strCategory}-category-filter` }
+            name={ el.strCategory }
+            onClick={ applyFilter }
+          >
+            {el.strCategory}
+          </button>))}
+      </div>
       {meals && (
         <div className={ style.container }>
           {meals.slice(0, twelve).map(({ idMeal, strMeal, strMealThumb }, index) => (
             <Link to={ `meals/${idMeal}` } key={ idMeal }>
-              <div
-                data-testid={ `${index}-recipe-card` }
-                className={ style.card } // Css - Carlos
-              >
-                <img src={ strMealThumb } data-testid={ `${index}-card-img` } alt="" /> // Alterei a ordei e a tag - Carlos
+              <div data-testid={ `${index}-recipe-card` } className={ style.card }>
+                <img src={ strMealThumb } data-testid={ `${index}-card-img` } alt="" />
                 <p data-testid={ `${index}-card-name` }>{strMeal}</p>
               </div>
             </Link>
@@ -77,15 +75,12 @@ function RenderMealsAndDrinks({ meals, drinks }) {
         </div>
       )}
       {drinks && (
-        <div>
+        <div className={ style.container }>
           {drinks.slice(0, twelve)
             .map(({ idDrink, strDrink, strDrinkThumb }, index) => (
               <Link to={ `drinks/${idDrink}` } key={ idDrink }>
-                <div
-                  data-testid={ `${index}-recipe-card` }
-                  className={ style.card } // Css - Carlos
-                >
-                  <img src={ strDrinkThumb } data-testid={ `${index}-card-img` } alt="" /> // Alterei a ordei e a tag - Carlos
+                <div data-testid={ `${index}-recipe-card` } className={ style.card }>
+                  <img src={ strDrinkThumb } data-testid={ `${index}-card-img` } alt="" />
                   <p data-testid={ `${index}-card-name` }>{strDrink}</p>
                 </div>
               </Link>
