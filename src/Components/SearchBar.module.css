@@ -1,5 +1,5 @@
 .section {
-  background-color: #41197F;
+  background-color: #41197f;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -18,13 +18,13 @@
 }
 
 .containerRadios {
-  background-color: #41197F;
+  background-color: #41197f;
 
 }
 
 .containerRadios label {
+  background-color: #41197f;
   color: white;
-  background-color: #41197F;
   margin: 10px;
 }
 
@@ -36,7 +36,7 @@
   background: rgb(252, 196, 54);
   border: none;
   border-radius: 5px;
-  color: #f5f5f5;
+  color: whitesmoke;
   font-weight: 700;
   height: 40px;
   margin: 10px;

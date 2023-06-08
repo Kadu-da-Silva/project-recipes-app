@@ -3,26 +3,26 @@
 }
 
 .navbar {
-  background-color: rgb(252,220,54);
+  background-color: rgb(252, 220, 54);
   display: flex;
   height: 52px;
 }
 
 .navbar h3 {
-  background-color: rgb(252,220,54);
-  color: #41197F;
+  background-color: rgb(252, 220, 54);
+  color: #41197f;
   flex-grow: 1;
   font-style: italic;
   font-weight: 400;
-  letter-spacing: 0.100em;
+  letter-spacing: 0.1em;
   margin-left: 90px;
   margin-top: 5px;
   text-transform: uppercase;
 }
 
 .navbar span {
-  background-color: rgb(252,220,54);
-  color: #41197F;
+  background-color: rgb(252, 220, 54);
+  color: #41197f;
   flex-grow: 1;
   font-weight: 800;
   margin-right: 60px;
@@ -30,12 +30,12 @@
 }
 
 .navbar button {
-  background-color: rgb(252,220,54);
+  background-color: rgb(252, 220, 54);
   border: none;
 }
 
 .navbar img {
-  background-color: rgb(252,220,54);
+  background-color: rgb(252, 220, 54);
 }
 
 .link {
@@ -53,9 +53,9 @@
 }
 
 .header h1 {
-  color: #41197F;
+  color: #41197f;
   font-weight: 700;
-  letter-spacing: 0.100em;
+  letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
 }
