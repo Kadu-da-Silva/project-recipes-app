@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+}
+
+.footer {
+  background-color: #41197f;
+  bottom: 0;
+  display: flex;
+  position: fixed;
+  width: 100%;
+}
+
+.footer button {
+  background-color: #41197f;
+  border: none;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  flex-grow: 1;
+}
+
+.footer img {
+  background-color: #41197f;
+}
