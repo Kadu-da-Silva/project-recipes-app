@@ -16,6 +16,7 @@
   border-left: 1px solid white;
   border-right: 1px solid white;
   flex-grow: 1;
+  padding: 5px;
 }
 
 .footer img {
