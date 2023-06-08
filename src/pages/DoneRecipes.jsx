@@ -13,7 +13,7 @@ function DoneRecipes() {
   const [linkCopied, setLinkCopied] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const getItemsFromLocalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
-  console.log(getItemsFromLocalStorage);
+  // console.log(getItemsFromLocalStorage);
   const renderTags = (tags, index) => {
     if (tags === null || tags === undefined) {
       return '';
