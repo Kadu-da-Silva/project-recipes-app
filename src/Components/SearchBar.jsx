@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import MyContext from '../context/MyContext';
 import { fetchApi } from '../services/fetchApi';
 
+import style from './SearchBar.module.css';
+
 function SearchBar({ name }) {
   // Estado global
   const { globalState, setGlobalState } = useContext(MyContext);
@@ -59,7 +61,7 @@ function SearchBar({ name }) {
   };
 
   return (
-    <div>
+    <section className={ style.section }>
       {/* Pesquisa por Texto em conjunto com o Tipo de Radio */}
       <input
         type="text"
@@ -68,46 +70,50 @@ function SearchBar({ name }) {
         value={ searchState.searchBar }
         placeholder="Pesquisar"
         onChange={ handleInputChange }
+        className={ style.inputEnter }
       />
 
       {/* Pesquisa por Ingredientes */}
-      <label htmlFor="ingredients">
-        <input
-          type="radio"
-          id="ingredients"
-          name="inputRadio"
-          value="filter.php?i="
-          data-testid="ingredient-search-radio"
-          onChange={ handleInputChange }
-        />
-        Ingredient
-      </label>
-
-      {/* Pesquisa por Nome */}
-      <label htmlFor="name">
-        <input
-          type="radio"
-          id="name"
-          name="inputRadio"
-          value="search.php?s="
-          data-testid="name-search-radio"
-          onChange={ handleInputChange }
-        />
-        Name
-      </label>
-
-      {/* Pesquisa pela Primeira letra */}
-      <label htmlFor="first-letter">
-        <input
-          type="radio"
-          id="first-letter"
-          name="inputRadio"
-          value="search.php?f="
-          data-testid="first-letter-search-radio"
-          onChange={ handleInputChange }
-        />
-        First letter
-      </label>
+      <div className={ style.containerRadios }>
+        <label htmlFor="ingredients" className={ style.label }>
+          <input
+            type="radio"
+            id="ingredients"
+            name="inputRadio"
+            value="filter.php?i="
+            data-testid="ingredient-search-radio"
+            onChange={ handleInputChange }
+            className={ style.radioIngredient }
+          />
+          Ingredient
+        </label>
+        {/* Pesquisa por Nome */}
+        <label htmlFor="name" className={ style.label }>
+          <input
+            type="radio"
+            id="name"
+            name="inputRadio"
+            value="search.php?s="
+            data-testid="name-search-radio"
+            onChange={ handleInputChange }
+            className={ style.radioName }
+          />
+          Name
+        </label>
+        {/* Pesquisa pela Primeira letra */}
+        <label htmlFor="first-letter" className={ style.label }>
+          <input
+            type="radio"
+            id="first-letter"
+            name="inputRadio"
+            value="search.php?f="
+            data-testid="first-letter-search-radio"
+            onChange={ handleInputChange }
+            className={ style.radioFirst }
+          />
+          First letter
+        </label>
+      </div>
 
       <button
         type="button"
@@ -116,7 +122,7 @@ function SearchBar({ name }) {
       >
         Pesquisar
       </button>
-    </div>
+    </section>
   );
 }
 

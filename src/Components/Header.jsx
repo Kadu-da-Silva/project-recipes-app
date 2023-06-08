@@ -1,10 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import profileImg from '../images/profileIcon.svg';
-import searchImg from '../images/searchIcon.svg';
 import MyContext from '../context/MyContext';
 import SearchBar from './SearchBar';
+
+import profileImg from '../images/profileIcon.svg';
+import searchImg from '../images/searchIcon.svg';
+import iconNavbar from '../images/icone-navbar.png';
+import drinkIcon from '../images/drinkIcon.svg';
+import mealIcon from '../images/mealIcon.svg';
+
+import style from './Header.module.css';
 
 function Header({ pageWithAllHeader, name }) {
   // Lida com retorno da Api
@@ -33,25 +39,32 @@ function Header({ pageWithAllHeader, name }) {
   }, [globalState, history, drinks, meals]);
 
   return (
-    <header>
-      <Link to="/profile">
-        <img
-          src={ profileImg }
-          alt="Profile"
-          data-testid="profile-top-btn"
-        />
-      </Link>
-
-      {/* Renderiza o icone de busca apenas em algumas páginas */}
-      {pageWithAllHeader
-      && (
-        <button onClick={ () => setSearchBarBool((prevState) => !prevState) }>
+    <header className={ style.header }>
+      <nav className={ style.navbar }>
+        <img src={ iconNavbar } alt="" className={ style.icon } />
+        <h3>Recipes</h3>
+        <span>app</span>
+        {/* Renderiza o icone de busca apenas em algumas páginas */}
+        {pageWithAllHeader
+        && (
+          <button onClick={ () => setSearchBarBool((prevState) => !prevState) }>
+            <img
+              src={ searchImg }
+              alt="Search"
+              data-testid="search-top-btn"
+            />
+          </button>)}
+        <Link to="/profile" className={ style.link }>
           <img
-            src={ searchImg }
-            alt="Search"
-            data-testid="search-top-btn"
+            src={ profileImg }
+            alt="Profile"
+            data-testid="profile-top-btn"
           />
-        </button>)}
+        </Link>
+      </nav>
+
+      {name === 'Meals' && <img src={ mealIcon } alt="" className={ style.iconPage } />}
+      {name === 'Drinks' && <img src={ drinkIcon } alt="" className={ style.iconPage } />}
 
       <h1 data-testid="page-title">{name}</h1>
 
