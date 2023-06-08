@@ -1,11 +1,12 @@
-@media screen and (max-width: 360px) {
+@media screen and ( max-width : 360px ) {
+
   .section {
     background-color: #41197f;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .inputEnter {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -13,26 +14,26 @@
     padding-left: 20px;
     width: 338px;
   }
-  
+
   .inputEnter:focus {
     outline: none;
   }
-  
+
   .containerRadios {
     background-color: #41197f;
   
   }
-  
+
   .containerRadios label {
     background-color: #41197f;
     color: white;
     margin: 10px;
   }
-  
+
   .containerRadios input {
     margin: 5px;
   }
-  
+
   .section button {
     background: rgb(252, 196, 54);
     border: none;
@@ -46,14 +47,15 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and ( min-width : 768px ) {
+
   .section {
     background-color: #41197f;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .inputEnter {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -61,26 +63,26 @@
     padding-left: 20px;
     width: 338px;
   }
-  
+
   .inputEnter:focus {
     outline: none;
   }
-  
+
   .containerRadios {
     background-color: #41197f;
   
   }
-  
+
   .containerRadios label {
     background-color: #41197f;
     color: white;
     margin: 10px;
   }
-  
+
   .containerRadios input {
     margin: 5px;
   }
-  
+
   .section button {
     background: rgb(252, 196, 54);
     border: none;
