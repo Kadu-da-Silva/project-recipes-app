@@ -4,6 +4,8 @@ import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import MyContext from '../context/MyContext';
 
+import style from './Footer.module.css';
+
 export default function Footer() {
   //   const { hasFooter } = props;
   const { globalState, setGlobalState } = useContext(MyContext);
@@ -33,7 +35,7 @@ export default function Footer() {
     // </div>
     <footer
       data-testid="footer"
-      style={ { position: 'fixed', bottom: '0px' } }
+      className={ style.footer }
     >
       <button
         onClick={ () => {
