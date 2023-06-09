@@ -39,7 +39,9 @@ function Login() {
   return (
     <section className={ style.section }>
       <div className={ style.box } />
-      <img src={ logo } alt="logo" className={ style.logo } />
+      <div className={ style.imgContainer }>
+        <img src={ logo } alt="logo" className={ style.logo } />
+      </div>
       <img src={ tomate } alt="tomate" className={ style.tomate } />
       <form className={ style.form }>
         <h1>Login</h1>
