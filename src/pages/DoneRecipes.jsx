@@ -4,6 +4,9 @@ import Header from '../Components/Header';
 import doneItemsMock from '../mock/tempMock';
 import shareImg from '../images/shareIcon.svg';
 
+//
+// // //
+// // // // // Temq que trocar o tempDate!@!#!@#!@#
 const tempDate = '23/06/2020';
 
 function DoneRecipes() {
@@ -13,7 +16,7 @@ function DoneRecipes() {
   const [linkCopied, setLinkCopied] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const getItemsFromLocalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
-  // console.log(getItemsFromLocalStorage);
+
   const renderTags = (tags, index) => {
     if (tags === null || tags === undefined) {
       return '';
@@ -31,9 +34,9 @@ function DoneRecipes() {
     return returningTags;
   };
 
-  const copyLink = ({ currentTarget: { id } }) => {
+  const copyLink = ({ currentTarget: { id } }, mealID = null) => {
     const host = window.location.origin;
-    const slug = `/meals/${id}`;
+    const slug = mealID ? `/meals/${id}` : `/drinks/${id}`;
     const url = host + slug;
     navigator.clipboard.writeText(url);
     setLinkCopied({ [id]: true });
@@ -110,7 +113,7 @@ function DoneRecipes() {
                 {item.idMeal && (
                   <button
                     id={ item.idMeal }
-                    onClick={ (e) => copyLink(e) }
+                    onClick={ (e) => copyLink(e, item.idMeal) }
                   >
                     {linkCopied[item.idMeal] && 'Link copied!'}
                     <img
