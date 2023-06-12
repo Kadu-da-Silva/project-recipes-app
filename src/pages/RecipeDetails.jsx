@@ -17,7 +17,6 @@ function RecipeDetails() {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     const resultMeals = await response.json();
     const { meals } = resultMeals;
-
     setDataApi({ meals });
   };
 
@@ -25,7 +24,6 @@ function RecipeDetails() {
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
     const resultDrinks = await response.json();
     const { drinks } = resultDrinks;
-
     setDataApi({ drinks });
   };
 
@@ -39,7 +37,6 @@ function RecipeDetails() {
     const { drinks } = await response.json();
     const MAX = 6;
     const firstSix = drinks.slice(0, MAX);
-
     setDrinksRecommendation(firstSix);
     setLoading(false);
   };
@@ -49,7 +46,6 @@ function RecipeDetails() {
     const { meals } = await response.json();
     const MAX = 6;
     const firstSix = meals.slice(0, MAX);
-
     setMealsRecommendation(firstSix);
     setLoading(false);
   };
@@ -59,8 +55,6 @@ function RecipeDetails() {
     fetchApiDrinksForRecommendation();
     fetchApiMealsForRecommendation();
   }, []);
-
-  useEffect(() => { console.log(dataApi); }, [dataApi]);
 
   const renderMeals = () => {
     const { meals } = dataApi;
@@ -242,6 +236,13 @@ function RecipeDetails() {
     <div>
       {pathname.includes('meals') && renderMeals()}
       {pathname.includes('drinks') && renderDrinks()}
+      <button
+        data-testid="start-recipe-btn"
+        className={ style.btnStart }
+        // onClick={ handleClick }
+      >
+        Start Recipe
+      </button>
     </div>
   );
 }

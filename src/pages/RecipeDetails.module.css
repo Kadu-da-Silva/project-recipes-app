@@ -9,7 +9,7 @@
   left: 50%;
   padding: 5px;
   position: absolute;
-  top: 40%;
+  top: 35%;
   transform: translate(-50%, -50%);
 }
 
@@ -31,7 +31,7 @@
   left: 35%;
   padding: 5px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%, -50%);
 }
 
@@ -108,6 +108,21 @@ itens visíveis. */
   /* width: calc(100% / 2); */
 }
 
+.btnStart {
+  background: rgb(252, 196, 54);
+  border: none;
+  border-radius: 5px;
+  bottom: 10px;
+  color: whitesmoke;
+  display: flex;
+  position: fixed;
+  font-weight: 700;
+  height: 80px;
+  left: 10px;
+  text-transform: uppercase;
+  width: 180px;
+}
+
 @media screen and ( max-width : 360px ) {
 
   .imgRecipe {
@@ -140,7 +155,7 @@ itens visíveis. */
   }
 
   .carousel {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     margin-left: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -173,5 +188,20 @@ itens visíveis. */
     scroll-snap-align: start;
 
     /* width: calc(100% / 2); */
+  }
+
+  .btnStart {
+    background: rgb(252, 196, 54);
+    border: none;
+    border-radius: 5px;
+    bottom: 0;
+    color: whitesmoke;
+    display: flex;
+    position: fixed;
+    font-weight: 700;
+    height: 40px;
+    left: 40px;
+    text-transform: uppercase;
+    width: 276px;
   }
 }
