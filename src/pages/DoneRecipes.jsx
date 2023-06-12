@@ -93,7 +93,10 @@ function DoneRecipes() {
                   maxWidth: 'fit-content',
                 } }
               >
-                <Link to={ `${item.idMeal ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`}` }>
+                <Link
+                  to={ `${item.idMeal
+                    ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`}` }
+                >
                   <img
                     src={ item.strMealThumb ? item.strMealThumb : item.strDrinkThumb }
                     alt="done recipes card img"
@@ -102,9 +105,13 @@ function DoneRecipes() {
                   />
                 </Link>
                 <div data-testid={ `${index}-horizontal-top-text` }>
-                  {item.idMeal ? `${item.strArea} - ${item.strCategory}` : item.strAlcoholic}
+                  {item.idMeal
+                    ? `${item.strArea} - ${item.strCategory}` : item.strAlcoholic}
                 </div>
-                <Link to={ `${item.idMeal ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`}` }>
+                <Link
+                  to={ `${item.idMeal
+                    ? `/meals/${item.idMeal}` : `/drinks/${item.idDrink}`}` }
+                >
                   <div data-testid={ `${index}-horizontal-name` }>
                     {item.idMeal ? item.strMeal : item.strDrink}
                   </div>
