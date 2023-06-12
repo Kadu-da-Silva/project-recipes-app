@@ -49,11 +49,11 @@
 }
 
 /* Definimos o contêiner .carousel com overflow-x: auto para permitir o scroll
-horizontal. Em seguida, usamos scroll-snap-type: x mandatory para criar os 
+horizontal. Em seguida, usamos scroll-snap-type: x mandatory para criar os
 pontos de ancoragem para cada item do carrossel.
 
 No .carousel-inner, definimos display: flex para criar um layout flexível
-e scroll-snap-type: x mandatory para garantir que os itens sejam ancorados 
+e scroll-snap-type: x mandatory para garantir que os itens sejam ancorados
 corretamente.
 
 Nos .carousel-item, usamos scroll-snap-align: start para alinhar cada item
