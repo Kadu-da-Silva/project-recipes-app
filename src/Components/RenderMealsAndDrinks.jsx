@@ -65,7 +65,7 @@ function RenderMealsAndDrinks({ meals, drinks }) {
       {meals && (
         <div className={ style.container }>
           {meals.slice(0, twelve).map(({ idMeal, strMeal, strMealThumb }, index) => (
-            <Link to={ `meals/${idMeal}` } key={ idMeal }>
+            <Link to={ `/meals/${idMeal}` } key={ idMeal }>
               <div data-testid={ `${index}-recipe-card` } className={ style.card }>
                 <img src={ strMealThumb } data-testid={ `${index}-card-img` } alt="" />
                 <p data-testid={ `${index}-card-name` }>{strMeal}</p>
