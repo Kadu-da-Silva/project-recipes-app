@@ -26,6 +26,7 @@
 .category {
   background-color: rgba(255, 255, 255, 0);
   color: rgb(252, 196, 54);
+  font-size: 18pt;
   font-weight: 500;
   left: 35%;
   padding: 5px;
@@ -43,6 +44,16 @@
 .container {
   border: 2px solid #ccc;
   border-radius: 5px;
+  margin-left: 25%;
+  padding: 5px;
+  width: 50%;
+}
+
+.container_video {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
   margin-left: 25%;
   padding: 5px;
   width: 50%;

@@ -120,20 +120,32 @@ function RecipeDetails() {
     return (
       <section className={ style.section }>
         <h1 data-testid="recipe-title">{meal.strMeal}</h1>
-        <img
-          src={ meal.strMealThumb }
-          alt={ meal.strMeal }
-          data-testid="recipe-photo"
-          className={ style.imgRecipe }
-        />
-        <h2>Category</h2>
-        <p data-testid="recipe-category">{meal.strCategory}</p>
+        <div className={ style.containerImg }>
+          <img
+            src={ meal.strMealThumb }
+            alt={ meal.strMeal }
+            data-testid="recipe-photo"
+            className={ style.imgRecipe }
+          />
+        </div>
+        <p
+          data-testid="recipe-category"
+          className={ style.category }
+        >
+          {meal.strCategory}
+        </p>
         <h2>Ingredients:</h2>
-        <ul>{renderIngredientsMeals()}</ul>
+        <div className={ style.container }>
+          <ul>{renderIngredientsMeals()}</ul>
+        </div>
         <h2>Instructions:</h2>
-        <p data-testid="instructions">{meal.strInstructions}</p>
+        <div className={ style.container }>
+          <p data-testid="instructions">{meal.strInstructions}</p>
+        </div>
         <h2>Video:</h2>
-        <iframe title="Video Youtube" src={ meal.strYoutube } data-testid="video" />
+        <div className={ style.container_video }>
+          <iframe title="Video Youtube" src={ meal.strYoutube } data-testid="video" />
+        </div>
         <h2>Recommendation</h2>
         {renderDrinksRecommendation()}
       </section>
