@@ -154,6 +154,16 @@ itens visíveis. */
     transform: translate(-50%, -50%);
   }
 
+  .container_video {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin-left: 18px;
+    padding: 5px;
+    width: 90%;
+  }
+
   .carousel {
     margin-bottom: 60px;
     margin-left: 0;
