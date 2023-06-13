@@ -115,10 +115,10 @@ itens visíveis. */
   bottom: 10px;
   color: whitesmoke;
   display: flex;
-  position: fixed;
   font-weight: 700;
   height: 80px;
   left: 10px;
+  position: fixed;
   text-transform: uppercase;
   width: 180px;
 }
@@ -207,10 +207,10 @@ itens visíveis. */
     bottom: 0;
     color: whitesmoke;
     display: flex;
-    position: fixed;
     font-weight: 700;
     height: 40px;
     left: 40px;
+    position: fixed;
     text-transform: uppercase;
     width: 276px;
   }
