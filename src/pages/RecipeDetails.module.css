@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+/* .section {
+  background-color: #41197f;
+} */
+
 .section h1 {
   background-color: rgba(255, 255, 255, 0);
   color: white;
@@ -9,7 +13,7 @@
   left: 50%;
   padding: 5px;
   position: absolute;
-  top: 40%;
+  top: 35%;
   transform: translate(-50%, -50%);
 }
 
@@ -26,11 +30,12 @@
 .category {
   background-color: rgba(255, 255, 255, 0);
   color: rgb(252, 196, 54);
+  font-size: 18pt;
   font-weight: 500;
   left: 35%;
   padding: 5px;
   position: absolute;
-  top: 50%;
+  top: 350px;
   transform: translate(-50%, -50%);
 }
 
@@ -43,6 +48,16 @@
 .container {
   border: 2px solid #ccc;
   border-radius: 5px;
+  margin-left: 25%;
+  padding: 5px;
+  width: 50%;
+}
+
+.container_video {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
   margin-left: 25%;
   padding: 5px;
   width: 50%;
@@ -97,6 +112,62 @@ itens visíveis. */
   /* width: calc(100% / 2); */
 }
 
+.btnStart {
+  background: rgb(252, 196, 54);
+  border: none;
+  border-radius: 5px;
+  bottom: 10px;
+  color: whitesmoke;
+  display: flex;
+  font-weight: 700;
+  height: 80px;
+  left: 10px;
+  position: fixed;
+  text-transform: uppercase;
+  width: 180px;
+}
+
+.alert {
+  background-color: rgb(252, 196, 54);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  left: 50%;
+  padding: 5px;
+  position: absolute;
+  top: 10%;
+  transform: translate(-50%, -50%);
+}
+
+.shareIcon {
+  background-color: rgb(252, 196, 54);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.shareIcon img {
+  background-color: rgb(252, 196, 54);
+}
+
+.favoriteIcon {
+  background-color: rgb(252, 196, 54);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  right: 70px;
+  top: 10px;
+}
+
+.favoriteIcon img {
+  background-color: rgb(252, 196, 54);
+}
+
 @media screen and ( max-width : 360px ) {
 
   .imgRecipe {
@@ -121,15 +192,25 @@ itens visíveis. */
     background-color: rgba(255, 255, 255, 0);
     color: rgb(252, 196, 54);
     font-weight: 500;
-    left: 20%;
+    left: 100px;
     padding: 5px;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
+  .container_video {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin-left: 18px;
+    padding: 5px;
+    width: 90%;
+  }
+
   .carousel {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     margin-left: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -162,5 +243,20 @@ itens visíveis. */
     scroll-snap-align: start;
 
     /* width: calc(100% / 2); */
+  }
+
+  .btnStart {
+    background: rgb(252, 196, 54);
+    border: none;
+    border-radius: 5px;
+    bottom: 0;
+    color: whitesmoke;
+    display: flex;
+    font-weight: 700;
+    height: 40px;
+    left: 40px;
+    position: fixed;
+    text-transform: uppercase;
+    width: 276px;
   }
 }
