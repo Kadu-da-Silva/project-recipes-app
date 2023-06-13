@@ -1,0 +1,167 @@
+@media screen and ( max-width : 360px ) {
+
+  * {
+    align-items: center;
+    background-color: white;
+    margin: 0;
+  }
+
+  .logo {
+    left: 90px;
+    position: absolute;
+    top: 30px;
+    width: 200px;
+  }
+
+  .tomate {
+    position: relative;
+    top: 180px;
+  }
+
+  .box {
+    background-color: #41197f;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 180px;
+  }
+
+  .form h1 {
+    color: #41197f;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.165em;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .label {
+    margin: 5px;
+  }
+
+  .label input {
+    border: 1px solid #41197f;
+    border-radius: 5px;
+    color: #41197f;
+    height: 40px;
+    width: 276px;
+  }
+
+  .label input:focus {
+    border: 1px solid rgb(252, 196, 54);
+    outline: none;
+  }
+
+  .btnDisabled {
+    background: rgba(252, 196, 54, 0.5);
+    border-radius: 5px;
+    height: 40px;
+    width: 276px;
+  }
+
+  .btnAble {
+    background: rgb(252, 196, 54);
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-weight: 700;
+    height: 40px;
+    margin: 10px;
+    text-transform: uppercase;
+    width: 276px;
+  }
+}
+
+@media screen and ( min-width : 768px ) {
+
+  * {
+    align-items: center;
+    background-color: white;
+    margin: 0;
+  }
+
+  .logo {
+    left: 50%;
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+  }
+
+  .tomate {
+    position: relative;
+    top: 180px;
+    visibility: hidden;
+  }
+
+  .box {
+    background-color: #41197f;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 280px;
+  }
+
+  .form h1 {
+    color: #41197f;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.165em;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .label {
+    margin: 5px;
+  }
+
+  .label input {
+    border: 1px solid #41197f;
+    border-radius: 5px;
+    color: #41197f;
+    height: 40px;
+    width: 276px;
+  }
+
+  .label input:focus {
+    border: 1px solid rgb(252, 196, 54);
+    outline: none;
+  }
+
+  .btnDisabled {
+    background: rgba(252, 196, 54, 0.5);
+    border-radius: 5px;
+    height: 40px;
+    width: 276px;
+  }
+
+  .btnAble {
+    background: rgb(252, 196, 54);
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-weight: 700;
+    height: 40px;
+    margin: 10px;
+    text-transform: uppercase;
+    width: 276px;
+  }
+}

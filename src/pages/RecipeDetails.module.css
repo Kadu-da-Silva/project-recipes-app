@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+}
+
+/* .section {
+  background-color: #41197f;
+} */
+
+.section h1 {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-weight: 700;
+  left: 50%;
+  padding: 5px;
+  position: absolute;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.containerImg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.imgRecipe {
+  width: 50%;
+}
+
+.category {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(252, 196, 54);
+  font-size: 18pt;
+  font-weight: 500;
+  left: 35%;
+  padding: 5px;
+  position: absolute;
+  top: 350px;
+  transform: translate(-50%, -50%);
+}
+
+.section h2 {
+  margin: 10px;
+  margin-left: 25%;
+  margin-top: 40px;
+}
+
+.container {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-left: 25%;
+  padding: 5px;
+  width: 50%;
+}
+
+.container_video {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  margin-left: 25%;
+  padding: 5px;
+  width: 50%;
+}
+
+/* Definimos o contêiner .carousel com overflow-x: auto para permitir o scroll
+horizontal. Em seguida, usamos scroll-snap-type: x mandatory para criar os
+pontos de ancoragem para cada item do carrossel.
+
+No .carousel-inner, definimos display: flex para criar um layout flexível
+e scroll-snap-type: x mandatory para garantir que os itens sejam ancorados
+corretamente.
+
+Nos .carousel-item, usamos scroll-snap-align: start para alinhar cada item
+ao início do carrossel e flex: 0 0 calc(100% / 2) para mostrar apenas dois
+itens por vez. Você pode ajustar calc(100% / 2) para alterar o número de
+itens visíveis. */
+
+.carousel {
+  margin-bottom: 20px;
+  margin-left: 25%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 50%;
+}
+
+.carousel img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 180px;
+}
+
+.carousel p {
+  border: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px;
+  width: 180px;
+}
+
+.carousel_inner {
+  display: flex;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel_item {
+  display: flex;
+  flex: 0 0 calc(100% / 2); /* Mostra apenas 2 itens por vez */
+  flex-direction: column;
+  scroll-snap-align: start;
+
+  /* width: calc(100% / 2); */
+}
+
+.btnStart {
+  background: rgb(252, 196, 54);
+  border: none;
+  border-radius: 5px;
+  bottom: 10px;
+  color: whitesmoke;
+  display: flex;
+  font-weight: 700;
+  height: 80px;
+  left: 10px;
+  position: fixed;
+  text-transform: uppercase;
+  width: 180px;
+}
+
+.alert {
+  background-color: rgb(252, 196, 54);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  left: 50%;
+  padding: 5px;
+  position: absolute;
+  top: 10%;
+  transform: translate(-50%, -50%);
+}
+
+.shareIcon {
+  background-color: rgb(252, 196, 54);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.shareIcon img {
+  background-color: rgb(252, 196, 54);
+}
+
+.favoriteIcon {
+  background-color: rgb(252, 196, 54);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  right: 70px;
+  top: 10px;
+}
+
+.favoriteIcon img {
+  background-color: rgb(252, 196, 54);
+}
+
+@media screen and ( max-width : 360px ) {
+
+  .imgRecipe {
+    width: 100%;
+  }
+
+  .container {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-left: 18px;
+    padding: 5px;
+    width: 90%;
+  }
+
+  .section h2 {
+    margin: 10px;
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+
+  .category {
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(252, 196, 54);
+    font-weight: 500;
+    left: 100px;
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .container_video {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin-left: 18px;
+    padding: 5px;
+    width: 90%;
+  }
+
+  .carousel {
+    margin-bottom: 60px;
+    margin-left: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+  }
+
+  .carousel img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 180px;
+  }
+
+  .carousel p {
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px;
+    width: 180px;
+  }
+
+  .carousel_inner {
+    display: flex;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel_item {
+    display: flex;
+    flex: 0 0 calc(100% / 2); /* Mostra apenas 2 itens por vez */
+    flex-direction: column;
+    scroll-snap-align: start;
+
+    /* width: calc(100% / 2); */
+  }
+
+  .btnStart {
+    background: rgb(252, 196, 54);
+    border: none;
+    border-radius: 5px;
+    bottom: 0;
+    color: whitesmoke;
+    display: flex;
+    font-weight: 700;
+    height: 40px;
+    left: 40px;
+    position: fixed;
+    text-transform: uppercase;
+    width: 276px;
+  }
+}

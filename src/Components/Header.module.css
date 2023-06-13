@@ -1,0 +1,141 @@
+@media screen and ( max-width : 360px ) {
+
+  * {
+    margin: 0;
+  }
+
+  .navbar {
+    background-color: rgb(252, 220, 54);
+    display: flex;
+    height: 52px;
+  }
+
+  .navbar h3 {
+    background-color: rgb(252, 220, 54);
+    color: #41197f;
+    flex-grow: 1;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin-left: 90px;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  .navbar span {
+    background-color: rgb(252, 220, 54);
+    color: #41197f;
+    flex-grow: 1;
+    font-weight: 800;
+    margin-right: 60px;
+    margin-top: 5px;
+  }
+
+  .navbar button {
+    background-color: rgb(252, 220, 54);
+    border: none;
+  }
+
+  .navbar img {
+    background-color: rgb(252, 220, 54);
+  }
+
+  .link {
+    margin: 5px;
+  }
+
+  .icon {
+    position: absolute;
+    width: 70px;
+  }
+
+  .header {
+    display: grid;
+    place-items: center;
+  }
+
+  .header h1 {
+    color: #41197f;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .iconPage {
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
+}
+
+@media screen and ( min-width : 768px ) {
+
+  * {
+    margin: 0;
+  }
+
+  .navbar {
+    background-color: rgb(252, 220, 54);
+    display: flex;
+    height: 52px;
+    width: 100%;
+  }
+
+  .navbar h3 {
+    background-color: rgb(252, 220, 54);
+    color: #41197f;
+    flex-grow: 1;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin-left: 90px;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  .navbar span {
+    background-color: rgb(252, 220, 54);
+    color: #41197f;
+    flex-grow: 1;
+    font-weight: 800;
+    left: 200px;
+    margin-top: 5px;
+    position: absolute;
+  }
+
+  .navbar button {
+    background-color: rgb(252, 220, 54);
+    border: none;
+  }
+
+  .navbar img {
+    background-color: rgb(252, 220, 54);
+  }
+
+  .link {
+    margin: 5px;
+  }
+
+  .icon {
+    position: absolute;
+    width: 70px;
+  }
+
+  .header {
+    display: grid;
+    place-items: center;
+  }
+
+  .header h1 {
+    color: #41197f;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .iconPage {
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
+}
