@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import shareIcon from '../images/shareIcon.svg';
+import heartIcon from '../images/whiteHeartIcon.svg';
+
 import style from '../pages/RecipeDetails.module.css';
 
 function RenderMealsWithId({ meals, drinksRecommendation, loading }) {
@@ -111,6 +114,8 @@ function RenderMealsWithId({ meals, drinksRecommendation, loading }) {
 
   return (
     <section className={ style.section }>
+      <img src={ shareIcon } alt="Compartilhar" data-testid="share-btn" />
+      <img src={ heartIcon } alt="Favoritar" data-testid="favorite-btn" />
       <h1 data-testid="recipe-title">{meal.strMeal}</h1>
       <div className={ style.containerImg }>
         <img
