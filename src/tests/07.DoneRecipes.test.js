@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 import renderWithRouterAndContext from '../utils/renderWithRouterAndContext';
 import DoneRecipes from '../pages/DoneRecipes';
-import localStorageMock from './mocks/localStorageMock';
+import doneItemsMock from '../mock/tempMock';
 
 const allBtnID = 'filter-by-all-btn';
 const mealBtnID = 'filter-by-meal-btn';
@@ -15,7 +15,7 @@ const PAGE_URL = '/done-recipes';
 
 describe('Testando DoneRecipes', () => {
   beforeEach(() => {
-    localStorage.setItem('doneRecipes', JSON.stringify(localStorageMock));
+    localStorage.setItem('doneRecipes', JSON.stringify(doneItemsMock));
   });
 
   afterEach(() => {
