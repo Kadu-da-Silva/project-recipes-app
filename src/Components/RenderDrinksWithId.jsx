@@ -3,13 +3,15 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import shareIcon from '../images/shareIcon.svg';
-import heartIcon from '../images/whiteHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 import style from '../pages/RecipeDetails.module.css';
 
 function RenderDrinksWithId({ drinks, mealsRecommendation, loading }) {
   const [isRecipeInProgress, setIsRecipeInProgress] = useState(false);
   const [isLinkCopied, setIsLinkCopied] = useState(false);
+  const [isRecipeFavorited, setIsRecipeFavorited] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -24,6 +26,16 @@ function RenderDrinksWithId({ drinks, mealsRecommendation, loading }) {
   }, [drinks]);
 
   const drink = drinks[0];
+
+  useEffect(() => {
+    // Verificar se a receita está favoritada
+    const favoriteRecipesJSON = localStorage.getItem('favoriteRecipes');
+    if (favoriteRecipesJSON) {
+      const favoriteRecipes = JSON.parse(favoriteRecipesJSON);
+      const isFavorited = favoriteRecipes.some((recipe) => recipe.id === drink.idDrink);
+      setIsRecipeFavorited(isFavorited);
+    }
+  }, [drink.idDrink]);
 
   const renderIngredientsDrinks = () => {
     const ingredients = [];
@@ -148,7 +160,19 @@ function RenderDrinksWithId({ drinks, mealsRecommendation, loading }) {
     }
 
     // Passo 2: Adicionar o novo favorito ao array existente
-    favoriteRecipes.push(recipe);
+    const isFavorited = favoriteRecipes.some((obj) => obj.id === idDrink);
+
+    if (isFavorited) {
+      // Remover a receita dos favoritos
+      const updatedRecipes = favoriteRecipes
+        .filter((obj) => obj.id !== idDrink);
+      setIsRecipeFavorited(false);
+      favoriteRecipes = updatedRecipes;
+    } else {
+      // Adicionar a receita aos favoritos
+      favoriteRecipes.push(recipe);
+      setIsRecipeFavorited(true);
+    }
 
     // Passo 3: Salvar o array atualizado de volta no localStorage
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
@@ -164,7 +188,9 @@ function RenderDrinksWithId({ drinks, mealsRecommendation, loading }) {
         <img src={ shareIcon } alt="Compartilhar" data-testid="share-btn" />
       </button>
       <button onClick={ handleBtnFavorite } className={ style.favoriteIcon }>
-        <img src={ heartIcon } alt="Favoritar" data-testid="favorite-btn" />
+        {isRecipeFavorited
+          ? <img src={ blackHeartIcon } alt="Favoritar" data-testid="favorite-btn" />
+          : <img src={ whiteHeartIcon } alt="Favoritar" data-testid="favorite-btn" />}
       </button>
       <h1 data-testid="recipe-title">{drink.strDrink}</h1>
       <div className={ style.containerImg }>
