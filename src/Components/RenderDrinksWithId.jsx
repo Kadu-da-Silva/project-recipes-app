@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import style from '../pages/RecipeDetails.module.css';
 
 function RenderDrinksWithId({ drinks, mealsRecommendation, loading }) {
   const [isRecipeInProgress, setIsRecipeInProgress] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     // Verificar se a receita está salva no localStorage
@@ -98,6 +101,8 @@ function RenderDrinksWithId({ drinks, mealsRecommendation, loading }) {
 
     // Passo 3: Salvar o objeto atualizado de volta no localStorage
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+
+    history.push(`/drinks/${idDrink}/in-progress`);
   };
 
   if (!drinks) {
