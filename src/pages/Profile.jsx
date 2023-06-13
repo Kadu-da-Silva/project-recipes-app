@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../Components/Header';
-// import Footer from '../components/Footer';
+import Footer from '../Components/Footer';
 
 function Profile() {
   const [emailProfile, setEmailProfile] = useState('');
@@ -53,7 +53,7 @@ function Profile() {
           Logout
         </button>
       </div>
-
+      <Footer />
     </div>
   );
 }

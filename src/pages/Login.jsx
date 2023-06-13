@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import style from './Login.module.css';
+import logo from '../images/logo-receita.jpg';
+import tomate from '../images/tomate.png';
+
 function Login() {
   const [input, setInput] = useState({ email: '', password: '' });
   const [isValid, setIsValid] = useState(false);
@@ -33,37 +37,43 @@ function Login() {
   }, [validateFields]);
 
   return (
-    <form>
-      <label>
-        <input
-          type="email"
-          data-testid="email-input"
-          name="email"
-          value={ input.email }
-          onChange={ handleChange }
-          placeholder="Email"
-        />
-      </label>
-      <label>
-        <input
-          type="password"
-          data-testid="password-input"
-          name="password"
-          value={ input.password }
-          onChange={ handleChange }
-          placeholder="Password"
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        onClick={ handleSubmit }
-        disabled={ !isValid } // Desabilita o botão se isValid for false
-        className={ !isValid ? 'disabled' : '' }
-      >
-        Enter
-      </button>
-    </form>
+    <section className={ style.section }>
+      <div className={ style.box } />
+      <img src={ logo } alt="logo" className={ style.logo } />
+      <img src={ tomate } alt="tomate" className={ style.tomate } />
+      <form className={ style.form }>
+        <h1>Login</h1>
+        <label className={ style.label }>
+          <input
+            type="email"
+            data-testid="email-input"
+            name="email"
+            value={ input.email }
+            onChange={ handleChange }
+            placeholder="Email"
+          />
+        </label>
+        <label className={ style.label }>
+          <input
+            type="password"
+            data-testid="password-input"
+            name="password"
+            value={ input.password }
+            onChange={ handleChange }
+            placeholder="Password"
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          onClick={ handleSubmit }
+          disabled={ !isValid } // Desabilita o botão se isValid for false
+          className={ !isValid ? style.btnDisabled : style.btnAble }
+        >
+          Enter
+        </button>
+      </form>
+    </section>
   );
 }
 
