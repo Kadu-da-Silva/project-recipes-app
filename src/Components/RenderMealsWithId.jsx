@@ -9,6 +9,7 @@ import style from '../pages/RecipeDetails.module.css';
 
 function RenderMealsWithId({ meals, drinksRecommendation, loading }) {
   const [isRecipeInProgress, setIsRecipeInProgress] = useState(false);
+  const [isLinkCopied, setIsLinkCopied] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -112,10 +113,60 @@ function RenderMealsWithId({ meals, drinksRecommendation, loading }) {
     return <p>Loading...</p>;
   }
 
+  const handleBtnShare = () => {
+    const link = window.location.href;
+
+    // Copiar o link para o clipboard
+    navigator.clipboard.writeText(link);
+
+    // Exibir mensagem de link copiado
+    setIsLinkCopied(true);
+
+    // Resetar a mensagem após alguns segundos
+    const MAX = 3000;
+    setTimeout(() => {
+      setIsLinkCopied(false);
+    }, MAX);
+  };
+
+  const handleBtnFavorite = () => {
+    console.log(meal);
+    const { idMeal, strCategory, strMeal, strMealThumb, strArea } = meal;
+
+    const recipe = {
+      id: idMeal,
+      type: 'meal',
+      nationality: strArea,
+      category: strCategory,
+      alcoholicOrNot: '',
+      name: strMeal,
+      image: strMealThumb,
+    };
+
+    // Passo 1: Recuperar o valor atual do localStorage
+    const favoriteRecipesJSON = localStorage.getItem('favoriteRecipes');
+    let favoriteRecipes = [];
+
+    // Verificar se já existe um valor no localStorage
+    if (favoriteRecipesJSON) {
+      favoriteRecipes = JSON.parse(favoriteRecipesJSON);
+    }
+
+    // Passo 2: Adicionar o novo favorito ao array existente
+    favoriteRecipes.push(recipe);
+
+    // Passo 3: Salvar o array atualizado de volta no localStorage
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+  };
+
   return (
     <section className={ style.section }>
-      <img src={ shareIcon } alt="Compartilhar" data-testid="share-btn" />
-      <img src={ heartIcon } alt="Favoritar" data-testid="favorite-btn" />
+      <button onClick={ handleBtnShare } className={ style.shareIcon }>
+        <img src={ shareIcon } alt="Compartilhar" data-testid="share-btn" />
+      </button>
+      <button onClick={ handleBtnFavorite } className={ style.favoriteIcon }>
+        <img src={ heartIcon } alt="Favoritar" data-testid="favorite-btn" />
+      </button>
       <h1 data-testid="recipe-title">{meal.strMeal}</h1>
       <div className={ style.containerImg }>
         <img
@@ -152,6 +203,7 @@ function RenderMealsWithId({ meals, drinksRecommendation, loading }) {
       >
         {isRecipeInProgress ? 'Continue Recipe' : 'Start Recipe'}
       </button>
+      {isLinkCopied && <p className={ style.alert }>Link copied!</p>}
     </section>
   );
 }
