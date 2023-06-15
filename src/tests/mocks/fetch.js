@@ -1,14 +1,19 @@
-const mealsByIngredient = require('./mealsByIngredient');
+// const mealsByIngredient = require('./mealsByIngredient');
 
-const fetch = (url) => Promise.resolve({
-  status: 200,
-  ok: true,
-  json: () => {
-    if (url === 'https://www.themealdb.com/api/json/v1/1/filter.php?i=Chicken') {
-      return Promise.resolve(mealsByIngredient);
-    }
-    return Promise.reject(new Error('Invalid url'));
-  },
-});
+// const fetchMock = (url) => {
+//   if (url === '') {
+//     return Promise.resolve({
+//       status: 200,
+//       ok: true,
+//       json: () => Promise.resolve(mealsByIngredient)
+//     })
+//   } else if (url === 'www.teste.com') {
+//     return Promise.resolve({
+//       status: 200,
+//       ok: true,
+//       json: () => Promise.resolve(mealsByIngredient)
+//     })
+//   }
+// };
 
-module.exports = fetch;
+// module.exports = fetchMock;
