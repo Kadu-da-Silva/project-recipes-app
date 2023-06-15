@@ -5,6 +5,8 @@ import Footer from '../Components/Footer';
 import favoriteItemsMock from '../mock/favoriteItems';
 
 import shareImg from '../images/shareIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 function FavoriteRecipes() {
   if (!localStorage.favoriteRecipes) {
@@ -175,6 +177,17 @@ function FavoriteRecipes() {
                       </p>
                     ))}
                   </div>)}
+                <button
+                  onClick={ () => handleBtnFavorite(item) }
+                  type="button"
+                >
+                  <img
+                    src={ item.isFavorite ? blackHeartIcon : whiteHeartIcon }
+                    alt="favorite"
+                    data-testid={ `${index}-horizontal-favorite-btn` }
+                  />
+                </button>
+                {linkCopied[item.id] && <span>Link Copied!</span>}
               </div>
 
             ))}
@@ -185,5 +198,4 @@ function FavoriteRecipes() {
     </div>
   );
 }
-
 export default FavoriteRecipes;
