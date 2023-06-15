@@ -5,17 +5,17 @@ import Footer from '../Components/Footer';
 import favoriteItemsMock from '../mock/favoriteItems';
 
 import shareImg from '../images/shareIcon.svg';
+
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 function FavoriteRecipes() {
-  if (!localStorage.favoriteRecipes) {
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteItemsMock));
-  }
+  // if (!localStorage.favoriteRecipes) {
+  //   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteItemsMock));
+  // }
+  // let getItemsFromLocalStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const [favoriteArray, setFavoritedArray] = useState(favoriteItemsMock);
   const [linkCopied, setLinkCopied] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
-  const getItemsFromLocalStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const [setIsRecipeFavorited] = useState(false);
 
   const copyLink = ({ currentTarget: { id } }, mealID = null) => {
     const host = window.location.origin;
@@ -36,45 +36,20 @@ function FavoriteRecipes() {
     }
   };
 
-  const handleBtnFavorite = () => {
-    const { idMeal, strCategory, strMeal, strMealThumb, strArea } = meal;
-
-    const recipe = {
-      id: idMeal,
-      type: 'meal',
-      nationality: strArea,
-      category: strCategory,
-      alcoholicOrNot: '',
-      name: strMeal,
-      image: strMealThumb,
-    };
-
-    // Passo 1: Recuperar o valor atual do localStorage
-    const favoriteRecipesJSON = localStorage.getItem('favoriteRecipes');
-    let favoriteRecipes = [];
-
-    // Verificar se já existe um valor no localStorage
-    if (favoriteRecipesJSON) {
-      favoriteRecipes = JSON.parse(favoriteRecipesJSON);
-    }
-
-    // Passo 2: Adicionar o novo favorito ao array existente e verificar se a receita já está favoritada
-    const isFavorited = favoriteRecipes.some((obj) => obj.id === idMeal);
-
+  const handleBtnFavorite = (e, currentItem) => {
+    const isFavorited = favoriteArray.find((obj) => obj.id === currentItem);
+    console.log(isFavorited);
     if (isFavorited) {
       // Remover a receita dos favoritos
-      const updatedRecipes = favoriteRecipes
-        .filter((obj) => obj.id !== idMeal);
-      setIsRecipeFavorited(false);
-      favoriteRecipes = updatedRecipes;
-    } else {
-      // Adicionar a receita aos favoritos
-      favoriteRecipes.push(recipe);
-      setIsRecipeFavorited(true);
-    }
+      const updatedRecipes = favoriteArray
+        .filter((obj) => obj.id !== isFavorited.id);
 
-    // Passo 3: Salvar o array atualizado de volta no localStorage
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+      localStorage.removeItem('favoriteRecipes');
+      console.log(localStorage.getItem('favoriteRecipes'));
+      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
+      console.log(localStorage.getItem('favoriteRecipes'));
+      setFavoritedArray(updatedRecipes);
+    }
   };
 
   return (
@@ -101,9 +76,9 @@ function FavoriteRecipes() {
           Drinks
         </button>
       </nav>
-      {getItemsFromLocalStorage && (
+      {favoriteArray && (
         <div className="done-list">
-          {getItemsFromLocalStorage
+          {favoriteArray
             .filter((item) => filterList(item))
             .map((item, index) => (
               <div
@@ -139,6 +114,17 @@ function FavoriteRecipes() {
                   </div>
                 </Link>
                 <div data-testid={ `${index}-horizontal-done-date` }>{item.doneDate}</div>
+                <button
+                  src={ blackHeartIcon }
+                  onClick={ (e) => handleBtnFavorite(e, item.id) }
+                  data-testid={ `${index}-horizontal-favorite-btn` }
+                  type="button"
+                >
+                  <img
+                    src={ blackHeartIcon }
+                    alt="favorite"
+                  />
+                </button>
                 {item.type === 'meal' && (
                   <button
                     id={ item.id }
@@ -165,8 +151,7 @@ function FavoriteRecipes() {
                     />
                   </button>
                 )}
-                {console.log(item.tags)}
-                {item.tags && item.tags.length > 0 && (
+                {/* {item.tags && item.tags.length > 0 && (
                   <div>
                     {item.tags.map((tag) => (
                       <p
@@ -176,25 +161,14 @@ function FavoriteRecipes() {
                         {tag}
                       </p>
                     ))}
-                  </div>)}
-                <button
-                  onClick={ () => handleBtnFavorite(item) }
-                  type="button"
-                >
-                  <img
-                    src={ item.isFavorite ? blackHeartIcon : whiteHeartIcon }
-                    alt="favorite"
-                    data-testid={ `${index}-horizontal-favorite-btn` }
-                  />
-                </button>
-                {linkCopied[item.id] && <span>Link Copied!</span>}
+                  </div>)} */}
+                {/* {linkCopied[item.id] && <span>Link Copied!</span>} */}
               </div>
-
             ))}
+          <Footer />
         </div>
       )}
 
-      <Footer />
     </div>
   );
 }
