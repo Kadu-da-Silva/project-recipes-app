@@ -17,8 +17,6 @@ function RenderMealsAndDrinks({ meals, drinks }) {
   const URL = (pathname === '/meals') ? 'https://www.themealdb.com/api/json/v1/1/list.php?c=list' : 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
   useEffect(() => {
     if ((pathname === '/meals') && meals?.length === 1 && !filterOn) {
-      console.log('entrou');
-      console.log(filterOn);
       const { idMeal } = meals[0];
       history.push(`/meals/${idMeal}`);
     } if ((pathname === '/drinks') && drinks?.length === 1 && !filterOn) {

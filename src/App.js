@@ -5,20 +5,19 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyProvider from './context/MyProvider';
 import Login from './pages/Login';
-import Meals from './pages/Meals';
-import Drinks from './pages/Drinks';
 import Profile from './pages/Profile';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import DoneRecipes from './pages/DoneRecipes';
 import RecipeDetails from './pages/RecipeDetails';
+import Recipes from './pages/Recipes';
 
 function App() {
   return (
     <MyProvider>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route exact path="/meals" component={ Meals } />
-        <Route exact path="/drinks" component={ Drinks } />
+        <Route exact path="/meals" component={ Recipes } />
+        <Route exact path="/drinks" component={ Recipes } />
         <Route path="/meals/:id" component={ RecipeDetails } />
         <Route path="/drinks/:id" component={ RecipeDetails } />
         <Route path="/meals/:id/in-progress" />
