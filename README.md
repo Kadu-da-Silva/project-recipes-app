@@ -15,7 +15,8 @@ Neste projeto desenvolvemos um app de receitas, utilizando o que há de mais mod
 
 ###  📝 Habilidades
 
-Além das habilidades de prache que desenvolvemos nos projetos em grupo da Trybe como: Kanban, Metodologias ágeis, Figma, etc. Exercitamos também:
+Além das habilidades de prache que desenvolvemos nos projetos em grupo da Trybe como: Kanban, Metodologias ágeis, Figma, etc. 
+Exercitamos também:
 
 * Utilizar Redux para gerenciar estado
 * Utilizar a biblioteca React-Redux
